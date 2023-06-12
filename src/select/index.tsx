@@ -2,24 +2,34 @@ import { FC, useEffect, useRef, useState } from "react";
 import { ISelect } from "./types";
 import styles from "./styles.module.css";
 
-const Select: FC<ISelect> = ({ value, onChange, options, classNameSelect }) => {
+const Select: FC<ISelect> = ({
+  value,
+  onChange,
+  options,
+  classNameSelect,
+  classNameOptions,
+  classNameOption,
+  classNameSelectedOption,
+  classNameHoveredOption,
+  classNameIcon,
+  classNameSelectOpen,
+}) => {
+  // TODO: indexHovered vs mouse hover
+
   const selectedOption = options.find(
     (option) => option.value === value?.value
   );
-  const initialIndexSelected = selectedOption
-    ? options.indexOf(selectedOption)
-    : 0;
+  const indexSelected = selectedOption ? options.indexOf(selectedOption) : 0;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [indexSelected, setIndexSelected] =
-    useState<number>(initialIndexSelected);
+  const [indexHovered, setIndexHovered] = useState<number>(indexSelected);
 
   // eslint-disable-next-line
   // @ts-ignore
   const containerRef = useRef<HTMLDivElement>(null); // Argument type null is not assignable to parameter type HTMLDivElement
 
   const incrementIndexState = () => {
-    setIndexSelected((prev) => {
+    setIndexHovered((prev) => {
       if (prev === options.length - 1) {
         return prev;
       }
@@ -28,7 +38,7 @@ const Select: FC<ISelect> = ({ value, onChange, options, classNameSelect }) => {
   };
 
   const subtractIndexState = () => {
-    setIndexSelected((prev) => {
+    setIndexHovered((prev) => {
       if (prev === 0) {
         return 0;
       }
@@ -56,7 +66,7 @@ const Select: FC<ISelect> = ({ value, onChange, options, classNameSelect }) => {
         case "Escape":
           if (isOpen) {
             setIsOpen(false);
-            setIndexSelected(initialIndexSelected);
+            setIndexHovered(indexSelected);
           }
           break;
 
@@ -64,7 +74,7 @@ const Select: FC<ISelect> = ({ value, onChange, options, classNameSelect }) => {
           if (!isOpen) {
             setIsOpen(true);
           } else {
-            onChange(options[indexSelected]);
+            onChange(options[indexHovered]);
             setIsOpen(false);
           }
           break;
@@ -97,8 +107,8 @@ const Select: FC<ISelect> = ({ value, onChange, options, classNameSelect }) => {
   return (
     <div
       ref={containerRef}
-      className={`${styles.selectContainer} ${
-        isOpen ? styles.open : ""
+      className={`${styles.selectContainer} ${isOpen ? styles.open : ""} ${
+        isOpen ? classNameSelectOpen : ""
       } ${classNameSelect}`}
       onClick={() => setIsOpen((prev) => !prev)}
       tabIndex={0} // for onBlur
@@ -109,7 +119,7 @@ const Select: FC<ISelect> = ({ value, onChange, options, classNameSelect }) => {
       </span>
 
       <svg
-        className={styles.selectIcon}
+        className={`${styles.selectIcon} ${classNameIcon}`}
         width="10"
         height="6"
         viewBox="0 0 10 6"
@@ -122,12 +132,22 @@ const Select: FC<ISelect> = ({ value, onChange, options, classNameSelect }) => {
         />
       </svg>
 
-      <ul className={styles.selectOptions}>
+      <ul className={`${styles.selectOptions} ${classNameOptions}`}>
         {options.map((option) => (
           <li
             key={option.value}
-            className={`${styles.selectOption} ${
+            className={`${styles.selectOption} ${classNameOption} ${
+              options.indexOf(option) === indexSelected
+                ? classNameSelectedOption
+                : ""
+            } ${
               options.indexOf(option) === indexSelected ? styles.selected : ""
+            } ${
+              options.indexOf(option) === indexHovered ? styles.hovered : ""
+            } ${
+              options.indexOf(option) === indexHovered
+                ? classNameHoveredOption
+                : ""
             }`}
             onClick={() => onChange(option)}
           >

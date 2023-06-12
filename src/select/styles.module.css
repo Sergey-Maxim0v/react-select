@@ -36,7 +36,7 @@
 .selectText {
     width: 100%;
     font-weight: 400;
-    color: black;
+    color: currentColor;
     transition: color 0.2s;
     white-space: nowrap;
     overflow: hidden;
@@ -78,12 +78,13 @@
     list-style-type: none;
 }
 
-.selectOption:hover{
+.selectOption.hovered, .selectOption:hover, .selectOption:focus {
     background-color: lightgray;
 }
 
-.selectOption:focus, .selectOption.selected {
+.selectOption.selected {
     background-color: gray;
+    color: white;
 }
 
 @keyframes animation-opacity {

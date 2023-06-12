@@ -8,3 +8,54 @@
 .row {
     margin: 40px;
 }
+
+.title {
+    margin: 0 0 40px;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.2em;
+}
+
+.select {
+    width: 200px;
+    padding: 12px;
+    color: gray;
+}
+
+.selectOpen {
+    border-radius: 0.3em 0.3em 0 0;
+}
+
+.select:focus {
+    border-color: blueviolet;
+    color: blueviolet;
+}
+
+.select:focus {
+    border-color: violet;
+}
+
+.optionsList {
+    top: calc(100% + 1px);
+    border-top: none;
+    border-radius: 0 0 0.3em 0.3em;
+}
+
+.optionsElement {
+    padding: 10px 12px;
+}
+
+.optionsElement.optionsElementHovered, .optionsElement:hover {
+    background-color: lightsteelblue;
+    color: blueviolet;
+}
+
+.optionsElement.optionsElementSelected {
+    background-color: blueviolet;
+    color: white;
+}
+
+.optionsElementIcon {
+    color: blueviolet;
+}

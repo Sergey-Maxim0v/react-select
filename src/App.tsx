@@ -10,12 +10,23 @@ const OPTIONS_1: ISelectTypeOption[] = [
   { label: "Blue", value: "Blue" },
 ];
 
+const OPTIONS_2: ISelectTypeOption[] = [
+  { label: "Ford", value: "ford" },
+  { label: "Ferrari", value: "ferrari" },
+  { label: "Kia", value: "kia" },
+  { label: "Mercedes", value: "mercedes" },
+  { label: "Audi", value: "audi" },
+];
+
 function App() {
   const [value1, setValue1] = useState<ISelectTypeOption>(OPTIONS_1[0]);
+  const [value2, setValue2] = useState<ISelectTypeOption>(OPTIONS_2[1]);
 
   return (
     <section className="layout">
       <div className="row">
+        <h5 className="title"> Default styles </h5>
+
         <Select
           onChange={(option) => setValue1(option)}
           options={OPTIONS_1}
@@ -23,8 +34,22 @@ function App() {
         />
       </div>
 
-      <div className="row">test</div>
-      <div className="row">test</div>
+      <div className="row">
+        <h5 className="title"> Customised </h5>
+
+        <Select
+          onChange={(option) => setValue2(option)}
+          options={OPTIONS_2}
+          value={value2}
+          classNameSelect="select"
+          classNameSelectOpen="selectOpen"
+          classNameOptions="optionsList"
+          classNameOption="optionsElement"
+          classNameSelectedOption="optionsElementSelected"
+          classNameIcon="optionsElementIcon"
+          classNameHoveredOption="optionsElementHovered"
+        />
+      </div>
     </section>
   );
 }
