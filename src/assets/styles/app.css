@@ -1,0 +1,10 @@
+.layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.row {
+    margin: 40px;
+}
