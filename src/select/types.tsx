@@ -2,13 +2,13 @@ export interface ISelect {
   onChange: (val: ISelectTypeOption) => void;
   options: ISelectTypeOption[];
   value: ISelectTypeOption | undefined;
-  classNameSelect?: string;
-  classNameSelectOpen?: string;
-  classNameOptions?: string;
-  classNameOption?: string;
-  classNameSelectedOption?: string;
-  classNameHoveredOption?: string;
-  classNameIcon?: string;
+  CNSelect?: string;
+  CNSelectOpen?: string;
+  CNList?: string;
+  CNOption?: string;
+  CNSelectedOption?: string;
+  CNHoveredOption?: string;
+  CNIcon?: string;
 }
 
 export interface ISelectTypeOption {

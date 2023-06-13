@@ -41,13 +41,13 @@ function App() {
           onChange={(option) => setValue2(option)}
           options={OPTIONS_2}
           value={value2}
-          classNameSelect="select"
-          classNameSelectOpen="selectOpen"
-          classNameOptions="optionsList"
-          classNameOption="optionsElement"
-          classNameSelectedOption="optionsElementSelected"
-          classNameIcon="optionsElementIcon"
-          classNameHoveredOption="optionsElementHovered"
+          CNSelect="select"
+          CNSelectOpen="selectOpen"
+          CNList="optionsList"
+          CNOption="optionsElement"
+          CNSelectedOption="optionsElementSelected"
+          CNIcon="optionsElementIcon"
+          CNHoveredOption="optionsElementHovered"
         />
       </div>
     </section>

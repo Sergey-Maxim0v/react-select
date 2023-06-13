@@ -29,7 +29,7 @@
     transform: rotateX(180deg);
 }
 
-.selectContainer.open .selectOptions {
+.selectContainer.open .selectList {
     display: flex;
 }
 
@@ -54,7 +54,7 @@
     pointer-events: none;
 }
 
-.selectOptions {
+.selectList {
     z-index: 300;
     display: none;
     position: absolute;

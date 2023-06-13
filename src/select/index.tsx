@@ -6,13 +6,13 @@ const Select: FC<ISelect> = ({
   value,
   onChange,
   options,
-  classNameSelect,
-  classNameOptions,
-  classNameOption,
-  classNameSelectedOption,
-  classNameHoveredOption,
-  classNameIcon,
-  classNameSelectOpen,
+  CNSelect,
+  CNList,
+  CNOption,
+  CNSelectedOption,
+  CNHoveredOption,
+  CNIcon,
+  CNSelectOpen,
 }) => {
   const selectedOption = options.find(
     (option) => option.value === value?.value
@@ -106,8 +106,8 @@ const Select: FC<ISelect> = ({
     <div
       ref={containerRef}
       className={`${styles.selectContainer} ${isOpen ? styles.open : ""} ${
-        isOpen ? classNameSelectOpen : ""
-      } ${classNameSelect ?? ""}`}
+        isOpen ? CNSelectOpen : ""
+      } ${CNSelect ?? ""}`}
       onClick={() => setIsOpen((prev) => !prev)}
       tabIndex={0} // for onBlur
       onBlur={() => setIsOpen(false)}
@@ -117,7 +117,7 @@ const Select: FC<ISelect> = ({
       </span>
 
       <svg
-        className={`${styles.selectIcon} ${classNameIcon ?? ""}`}
+        className={`${styles.selectIcon} ${CNIcon ?? ""}`}
         width="10"
         height="6"
         viewBox="0 0 10 6"
@@ -130,21 +130,19 @@ const Select: FC<ISelect> = ({
         />
       </svg>
 
-      <ul className={`${styles.selectOptions} ${classNameOptions ?? ""}`}>
+      <ul className={`${styles.selectList} ${CNList ?? ""}`}>
         {options.map((option, index) => (
           <li
             key={option.value}
-            className={`${styles.selectOption} ${classNameOption ?? ""} ${
-              options.indexOf(option) === indexSelected
-                ? classNameSelectedOption
-                : ""
+            className={`${styles.selectOption} ${CNOption ?? ""} ${
+              options.indexOf(option) === indexSelected ? CNSelectedOption : ""
             } ${
               options.indexOf(option) === indexSelected ? styles.selected : ""
             } ${
               options.indexOf(option) === indexHovered ? styles.hovered : ""
             } ${
-              classNameHoveredOption && options.indexOf(option) === indexHovered
-                ? classNameHoveredOption
+              CNHoveredOption && options.indexOf(option) === indexHovered
+                ? CNHoveredOption
                 : ""
             }`}
             onClick={() => onChange(option)}
