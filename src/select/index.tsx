@@ -14,8 +14,6 @@ const Select: FC<ISelect> = ({
   classNameIcon,
   classNameSelectOpen,
 }) => {
-  // TODO: indexHovered vs mouse hover
-
   const selectedOption = options.find(
     (option) => option.value === value?.value
   );
@@ -109,7 +107,7 @@ const Select: FC<ISelect> = ({
       ref={containerRef}
       className={`${styles.selectContainer} ${isOpen ? styles.open : ""} ${
         isOpen ? classNameSelectOpen : ""
-      } ${classNameSelect}`}
+      } ${classNameSelect ?? ""}`}
       onClick={() => setIsOpen((prev) => !prev)}
       tabIndex={0} // for onBlur
       onBlur={() => setIsOpen(false)}
@@ -119,7 +117,7 @@ const Select: FC<ISelect> = ({
       </span>
 
       <svg
-        className={`${styles.selectIcon} ${classNameIcon}`}
+        className={`${styles.selectIcon} ${classNameIcon ?? ""}`}
         width="10"
         height="6"
         viewBox="0 0 10 6"
@@ -132,11 +130,11 @@ const Select: FC<ISelect> = ({
         />
       </svg>
 
-      <ul className={`${styles.selectOptions} ${classNameOptions}`}>
-        {options.map((option) => (
+      <ul className={`${styles.selectOptions} ${classNameOptions ?? ""}`}>
+        {options.map((option, index) => (
           <li
             key={option.value}
-            className={`${styles.selectOption} ${classNameOption} ${
+            className={`${styles.selectOption} ${classNameOption ?? ""} ${
               options.indexOf(option) === indexSelected
                 ? classNameSelectedOption
                 : ""
@@ -145,11 +143,12 @@ const Select: FC<ISelect> = ({
             } ${
               options.indexOf(option) === indexHovered ? styles.hovered : ""
             } ${
-              options.indexOf(option) === indexHovered
+              classNameHoveredOption && options.indexOf(option) === indexHovered
                 ? classNameHoveredOption
                 : ""
             }`}
             onClick={() => onChange(option)}
+            onMouseOver={() => setIndexHovered(index)}
           >
             {option.label}
           </li>

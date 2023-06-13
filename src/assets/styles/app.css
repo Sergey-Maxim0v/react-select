@@ -46,7 +46,7 @@
     padding: 10px 12px;
 }
 
-.optionsElement.optionsElementHovered, .optionsElement:hover {
+.optionsElement.optionsElementHovered {
     background-color: lightsteelblue;
     color: blueviolet;
 }

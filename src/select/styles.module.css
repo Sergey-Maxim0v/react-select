@@ -42,6 +42,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     user-select: none;
+    pointer-events: none;
 }
 
 .selectIcon {
@@ -50,6 +51,7 @@
     height: 1em;
     color: currentColor;
     transition: transform 0.2s;
+    pointer-events: none;
 }
 
 .selectOptions {
@@ -78,7 +80,7 @@
     list-style-type: none;
 }
 
-.selectOption.hovered, .selectOption:hover, .selectOption:focus {
+.selectOption.hovered, .selectOption:focus {
     background-color: lightgray;
 }
 
