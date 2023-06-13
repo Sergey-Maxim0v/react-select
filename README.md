@@ -36,7 +36,7 @@ UI-Kit Select
 </h2>
 
 <p align="center">
-Keyboard and mouse controls are supported.
+Select is controlled using the keyboard and mouse.
 </p>
 
 ---
